@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="slike/" rel="icon" type="image/png">
+
+<title>BiH u sastavu FNRJ-a</title>
+
+<style>
+
+@import url('https://www.google.com/search?sca_esv=1ff17551be336d16&rlz=1C1GCEA_enBA1201BA1201&sxsrf=ANbL-n6gC_nJk6QAD6STzYsEPYs2B9439g:1778697742625&udm=2&fbs=ADc_l-bMiqGtQJrI9Af0zglw9Wlf3rTAN5uv3jA1NMYc1dIxWt639-DVeac8pE-BXDv8M3BM34cCUswuTqTnSc9dMDKzmHqG_NiirHIbkWw9DKtlaqhY8qOB6qjTaHOgIABUvRqaMHjOWTPRo0s_W8WBYs-86AUCHgru7JB_shbWrXHMuw7VvzjLMMZiDjGORAqlDia2h3-SSUtrDArYCsTSIRABMj92jQ&q=izgradnja+pruge+brcko+banovici&sa=X&ved=2ahUKEwiorvK49baUAxWhnf0HHczfOcAQtKgLegQIGBAB&biw=1920&bih=945&dpr=1#sv=CAMSVhoyKhBlLVN0clVYWmllbE42VHhNMg5TdHJVWFppZWxONlR4TToOUkc0WndLeDdYeTJ2LU0gBCocCgZtb3NhaWMSEGUtU3RyVVhaaWVsTjZUeE0YADABGAcg9MHz5wNKCBABGAEgASgB');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#7a0000;
+    color:#fff7dc;
+    font-family:"Merriweather", serif;
+    overflow-x:hidden;
+}
+
+
+
+body::before{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top left, rgba(255,215,0,0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 40%);
+    z-index:-1;
+}
+
+
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 70px;
+    background:rgba(70,0,0,0.96);
+    border-bottom:3px solid #ffd966;
+    z-index:1000;
+}
+
+.logo{
+    font-family:"Cinzel", serif;
+    font-size:32px;
+    color:#ffd966;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+nav ul li{
+    list-style:none;
+}
+
+nav ul li a{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:#fff4d6;
+    padding:16px 18px;
+    border-radius:16px;
+    font-size:15px;
+    line-height:1.2;
+    gap:4px;
+    min-width:120px;
+    text-align:center;
+    transition:transform 0.35s ease, background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+    position:relative;
+}
+
+nav ul li a::after{
+    content:'';
+    width:0;
+    height:2px;
+    background:#ffd966;
+    position:absolute;
+    left:50%;
+    bottom:10px;
+    transform:translateX(-50%);
+    transition:width 0.35s ease;
+}
+
+nav ul li a:hover::after{
+    width:60%;
+}
+
+nav ul li a:hover{
+    background:rgba(255,217,102,0.16);
+    color:#ffd966;
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 12px 24px rgba(0,0,0,0.18);
+}
+
+nav ul li a .nav-title{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+nav ul li a .nav-subtitle{
+    font-size:0.82em;
+    opacity:0.85;
+}
+
+
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:170px 30px 80px;
+}
+
+.hero h1{
+    font-family:"Cinzel", serif;
+    font-size:92px;
+    color:#ffd966;
+    margin-bottom:30px;
+}
+
+.hero p{
+    max-width:1250px;
+    font-size:25px;
+    line-height:2;
+    color:#fff5d6;
+}
+
+
+
+.flag-scene{
+
+    position:relative;
+    width:420px;
+    height:240px;
+    margin-top:70px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    perspective:1200px;
+}
+
+.flag3d{
+
+    width:340px;
+    height:200px;
+
+    border-radius:8px;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #003893 0%,
+        #003893 33%,
+        white 33%,
+        white 66%,
+        #d72828 66%,
+        #d72828 100%
+    );
+
+    animation:waveFlag 4s ease-in-out infinite;
+
+    transform-style:preserve-3d;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.45);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.flag3d::before{
+
+    content:'';
+
+    position:absolute;
+    width:100%;
+    height:100%;
+
+    background:
+    repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.05) 0px,
+        rgba(255,255,255,0.02) 20px,
+        transparent 40px
+    );
+}
+
+.star{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:75px;
+    height:75px;
+
+    background:#ff0000;
+    outline:8px solid #ffd966;
+    outline-offset:-4px;
+
+    transform:
+    translate(-50%,-50%)
+    rotate(0deg);
+
+    clip-path:polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+    );
+}
+
+@keyframes waveFlag{
+
+    0%{
+        transform:
+        rotateY(-12deg)
+        skewY(1deg);
+    }
+
+    25%{
+        transform:
+        rotateY(10deg)
+        skewY(-1deg);
+    }
+
+    50%{
+        transform:
+        rotateY(-10deg)
+        skewY(1deg);
+    }
+
+    75%{
+        transform:
+        rotateY(8deg)
+        skewY(-1deg);
+    }
+
+    100%{
+        transform:
+        rotateY(-12deg)
+        skewY(1deg);
+    }
+}
+
+
+.hero-gallery{
+    margin-top:70px;
+    display:flex;
+    gap:35px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.hero-gallery img{
+    width:330px;
+    height:230px;
+    object-fit:cover;
+    border-radius:18px;
+    border:4px solid #ffd966;
+    transition:0.5s;
+}
+
+.hero-gallery img:hover{
+    transform:scale(1.08);
+}
+
+/* CONTENT */
+
+.content-section{
+    min-height:100vh;
+    padding:160px 10%;
+    display:none;
+    animation:fadeSection 1s ease;
+}
+
+.content-section.active{
+    display:block;
+}
+
+.sources{
+    display:none;
+    padding:60px 10%;
+}
+
+.sources h2{
+    text-align:center;
+    font-size:32px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:24px;
+}
+
+.sources ul{
+    list-style:none;
+    padding-left:0;
+    display:grid;
+    gap:10px;
+}
+
+.sources li{
+    padding:12px 16px;
+    background:rgba(255,217,102,0.08);
+    border:1px solid rgba(255,217,102,0.18);
+    border-radius:12px;
+}
+
+.section-container{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+.section-container img{
+    width:500px;
+    max-width:100%;
+    border-radius:20px;
+    border:5px solid #ffd966;
+    transition:0.5s;
+}
+
+.section-container img:hover{
+    transform:scale(1.05);
+}
+
+.text{
+    flex:1;
+}
+
+.text h2{
+    font-family:"Cinzel", serif;
+    font-size:58px;
+    margin-bottom:35px;
+    color:#ffd966;
+}
+
+.text p{
+    font-family:"Playfair Display", serif;
+    font-size:24px;
+    line-height:2.25;
+    text-align:justify;
+    color:#fff5dd;
+}
+
+
+.sources{
+    background:#5c0000;
+    padding:120px 10%;
+}
+
+.sources h2{
+    text-align:center;
+    color:#ffd966;
+    font-size:54px;
+    margin-bottom:50px;
+    font-family:"Cinzel", serif;
+}
+
+.sources ul{
+    max-width:1200px;
+    margin:auto;
+}
+
+.sources li{
+    font-size:24px;
+    line-height:2;
+    margin-bottom:18px;
+    font-family:"Playfair Display", serif;
+}
+
+
+footer{
+    background:#400000;
+    text-align:center;
+    padding:40px;
+    color:#ffd966;
+    font-size:18px;
+}
+
+
+@keyframes fadeSection{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+@media(max-width:900px){
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+        padding:20px;
+    }
+
+    nav ul{
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .text h2{
+        font-size:38px;
+    }
+
+    .text p{
+        font-size:18px;
+    }
+
+    .section-container{
+        flex-direction:column;
+    }
+
+    .hero-gallery img{
+        width:90%;
+        height:auto;
+    }
+
+    .flag-scene{
+        width:100%;
+    }
+
+    .flag3d{
+        width:260px;
+        height:160px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<nav>
+
+<div class="logo">BiH u FNRJ</div>
+
+<ul>
+<li><a href="#" onclick="showSection('home')"><span class="nav-title">FNRJ</span><span class="nav-subtitle">Period</span></a></li>
+<li><a href="#" onclick="showSection('represija')"><span class="nav-title">USTAV</span><span class="nav-subtitle">Pravni okvir</span></a></li>
+<li><a href="#" onclick="showSection('sukob')"><span class="nav-title">Nacionalno pitanje</span><span class="nav-subtitle">Regionalni status</span></a></li>
+<li><a href="#" onclick="showSection('vojska')"><span class="nav-title">SUKOB STALJIN-TITO</span><span class="nav-subtitle">Kriza 1948</span></a></li>
+<li><a href="#" onclick="showSection('zakljucak')"><span class="nav-title"> OKRETANJE JUGOSLAVIJE KA ZAPADU
+</span><span class="nav-subtitle">Konačni utjecaj</span></a></li>
+</ul>
+
+</nav>
+
+
+<section id="home" class="content-section active">
+
+<div class="hero">
+
+<h1>BiH u sastavu FNRJ-a</h1>
+
+<p>
+
+Bosna i Hercegovina nakon Drugog svjetskog rata prolazi kroz jedno od najdramatičnijih razdoblja svoje moderne historije. Iz ratom razorene i siromašne zemlje postepeno prerasta u važan politički, vojni i industrijski centar Federativne Narodne Republike Jugoslavije. Sukob Tito–Staljin 1948. godine označio je prekretnicu koja će oblikovati sudbinu cijele države, ali i svakodnevni život stanovništva Bosne i Hercegovine.
+
+</p>
+
+<div class="flag-scene">
+
+<div class="flag3d">
+
+<div class="star"></div>
+
+</div>
+
+</div>
+
+<div class="hero-gallery">
+
+<img src="slike/Josip_Broz_Tito_uniform_portrait.jpg">
+
+<img src="slike/BRCKO-BANOVIC.jpg.webp">
+
+<img src="slike/JStalin_Secretary_general_CCCP_1942.jpg.webp">
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="sukob" class="content-section">
+
+<div class="section-container">
+
+<img src="slike/tito-nacionalno-pitanje-u-jugoslaviji-u-svjetlosti-narodnooslobodilacke-borbe-1702797025x1ep8RUqv.webp" alt="Marshal Tito">
+
+<div class="text">
+
+<h2>NACIONALNO PITANJE</h2>
+
+<p>
+
+Komunistička partija Bosne i Hercegovine (KP BiH) imala je dominantnu ulogu u svim sferama političkog i društvenog života. Ona je bila odgovorna za provođenje partijske linije i osiguravanje lojalnosti centralnoj vlasti u Beogradu.
+Bosna i Hercegovina je oduvijek bila multietnička zajednica. U FNRJ, nacionalno pitanje je bilo osjetljivo, a politika je nastojala promovirati bratstvo i jedinstvo, istovremeno priznajući specifičnosti pojedinih naroda.
+Uspostava FNRJ dovela je do formiranja republičkih institucija u BiH, uključujući Narodnu skupštinu, vladu i sudstvo. Ove institucije su bile ključne za funkcioniranje republike i provođenje federalnih politika na lokalnoj razini.
+
+
+
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="represija" class="content-section">
+
+<div class="section-container">
+
+<img src="slike/ustav-fnrj-2.jpg">
+
+<div class="text">
+
+<h2>USTAV</h2>
+
+<p>
+
+Jugoslavija uređena po uzoru na sovjetski ustav
+Definisano je 6 republika (Slovenija, Hrvatska, Srbija, Crna Gora, BiH I Makedonija) 
+
+BiH je definisana kao narodna država republikanskog oblika. 
+Potvrđena je ravnopravnost Srba, Hrvata i Muslimana
+Ustavom su uspostavljeni najviši organi vlasti uključujući Narodnu skupštinu NR BiH i Vladu NR BiH
+Kada je Bosna i Hercegovina bila u sastavu Federativne Narodne Republike Jugoslavije (FNRJ), njen ustavni položaj bio je definisan saveznim i republičkim ustavima.
+
+Prvi važan dokument bio je Ustav FNRJ iz 1946. godine. Po uzoru na sovjetski model, tim ustavom Jugoslavija je postala federativna država u kojoj su republike imale određena prava, ali je stvarna vlast bila veoma centralizovana. Bosna i Hercegovina je priznata kao jedna od ravnopravnih republika, što je bilo značajno jer je prvi put u modernoj historiji dobila status federalne jedinice sa vlastitim institucijama.
+
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="industrija" class="content-section">
+
+<div class="section-container">
+
+<img src="slike/sddefault.jpg">
+
+<div class="text">
+
+<h2>SUKOB STALJIN-TITO</h2>
+
+<p>
+
+FNRJ je težila ka svom vlastitom društvenom uređenju koji je bio poput komunizma ali sa posebnim mjerama u vlasti i državne imovine čega nije bilo u komunizmu, naravno to se nije svidjelo Staljinu koji je težio da stavi sve komunističke zemlje pod svoju kontrolu.
+
+Mart 1948.- SSSR povlači civilne i vojne stručnjake iz Jugoslavije uz optužbe o neprijateljskom odnosu.
+
+Maj 1948.- KPJ odbija Staljinov poziv na da pošalje delegaciju na zasjedanje informibrooa u Bukureštu kako bi se “pokajali” za svoje greške.
+
+28.6.1948.- Jugoslavija izbačena iz zajednice komunističkih partija a KPJ optužena za nacionalizam i skretanje s marksističkog puta.
+
+1949.- Osniva se zloglasni logor “Goli otok” koji je namijenjen za izolaciju i predgoj za pristaše rezolucije (Titove izdajnike koji su podržavali Staljina u sukobu).
+
+1953.- Staljinova smrt.
+
+1955.- Beogradskim kongersom novi lider SSSR-a Nikita Hruščev priznaje pravo Jugoslaviji na vlastiti put u socijalizam čime je sukob okončan.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="cazin" class="content-section">
+
+<div class="section-container">
+
+<img src="/slike/Cazin_Bosnia.jpg" alt="Cazin, Bosnia">
+
+<div class="text">
+
+<h2>ZAKLJUČAK</h2>
+
+<p>
+
+Cazinska buna izbila je 6. maja 1950. godine kao reakcija seljaka na prisilni otkup poljoprivrednih proizvoda i težak život na selu. Pobuna je zahvatila područja Cazina, Velike Kladuše i dijelove Korduna, a učestvovalo je oko sedam stotina ustanika.
+
+Jugoslavenska armija i milicija brzo su ugušile ustanak. Petnaest ustanika je strijeljano, dok su stotine ljudi osuđene na zatvorske kazne. Mnoge porodice bile su prisilno raseljene. Vlast je događaj predstavila kao kontrarevolucionarni pokušaj rušenja sistema, dok je za stanovništvo Krajine buna ostala simbol otpora represiji.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="kultura" class="content-section">
+
+<div class="section-container">
+
+<img src="/slike/University_of_Sarajevo.jpg" alt="University of Sarajevo">
+
+<div class="text">
+
+<h2>Kultura i obrazovanje</h2>
+
+<p>
+
+Kulturni život Bosne i Hercegovine u periodu FNRJ doživio je značajan razvoj. Ivo Andrić postao je prvi nobelovac sa ovih prostora 1961. godine, dok je Meša Selimović svojim djelima obilježio jugoslavensku književnost. Sevdalinka je ostala simbol bosanskohercegovačke muzičke tradicije, a izvođači poput Safeta Isovića i Zaima Imamovića stekli su veliku popularnost.
+
+Sarajevo se razvijalo kao važan kulturni centar sa filmskom produkcijom, pozorištima i umjetničkim institucijama. Ipak, kulturni život bio je pod snažnim utjecajem socijalističke ideologije, pa su književnost i umjetnost često morale pratiti službenu političku liniju države.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="sankcije" class="content-section">
+
+<div class="section-container">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/UNRRA_package.jpg">
+
+<div class="text">
+
+<h2>Sankcije i izolacija</h2>
+
+<p>
+
+Nakon sukoba sa Staljinom Jugoslavija se našla u političkoj i ekonomskoj izolaciji. Sovjetski Savez i njegove saveznice prekinuli su saradnju sa Jugoslavijom, što je ozbiljno pogodilo i Bosnu i Hercegovinu. Nedostatak sirovina otežavao je industrijalizaciju i svakodnevni život stanovništva.
+
+Zapadne zemlje pružile su ekonomsku pomoć kako bi Jugoslavija opstala izvan sovjetske sfere utjecaja. Ovaj period dodatno je pojačao unutrašnju represiju, ali je istovremeno ubrzao okretanje Jugoslavije prema politici nesvrstanosti i saradnji sa Zapadom.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="vojska" class="content-section">
+
+<div class="section-container">
+
+<img src="slike/Poziv.webp">
+
+<div class="text">
+
+<h2>SUKOB STALJIN-TITO</h2>
+
+<p>
+
+FNRJ je težila ka svom vlastitom društvenom uređenju koji je bio poput komunizma ali sa posebnim mjerama u vlasti i državne imovine čega nije bilo u komunizmu, naravno to se nije svidjelo Staljinu koji je težio da stavi sve komunističke zemlje pod svoju kontrolu.
+Mart 1948.-SSSR povlači civilne i vojne stručnjake iz Jugoslavije uz optužbe o neprijateljskom odnosu.
+
+Maj 1948.-KPJ odbija Staljinov poziv na da pošalje delegaciju na zasjedanje informibrooa u Bukureštu kako bi se “pokajali” za svoje greške.
+
+28.6.1948.-Jugoslavija izbačena iz zajednice komunističkih partija a KPJ optužena za nacionalizam I skretanje s marksističkog puta.
+
+1949.-Osniva se zloglasni logor “Goli otok”koji je namijenjen za izolaciju I predgoj za pristaše rezolucije(Titove izdajnike koji su podržavali Staljina u sukobu).
+
+1953.-Staljinova smrt.
+
+1955.-Beogradskim kongersom novi lider SSSR-a Nikita Hruščev priznaje pravo Jugoslaviji na vlastiti put u socijalizam čime je sukob okončan.
+
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="zakljucak" class="content-section">
+
+<div class="section-container">
+
+<img src="slike/Yugoslavia_1956-1990.svg.png">
+
+<div class="text">
+
+<h2>OKRETANJE JUGOSLAVIJE KA ZAPADU</h2>
+
+<p>
+
+1949.god-SSSR uvodi potpunu ekonomsku blokadu Jugoslaviji, Zapad šalje prve kredite I pomoć u hrani kako bi se spriječila humanitarna katastrofa I kolaps države.
+1951.God Jugoslavija potpisuje MAP(pakt o vojnoj pomoći) sa SAD,Velikom Britanijom i Francuskom, tim sporazumom Jugoslavija dobija ogromne količine naoružanja u vrijednosti od tadašnjih milijardi dolara kako bi se mogla odbraniti od eventualne sovijetske invazije.
+1953.Balkanski pakt(savez sa Turskom,Grčkom),teorijski postaje dio zapadnog odbrambenog sistema.
+
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="sources">
+
+<h2>IZVORI</h2>
+
+<ul>
+
+<li>Ustavno pravo Bosne i Hercegovine — Kasim Trnka, Sarajevo, 2006</li>
+
+<li>Historija Bosne i Hercegovine — Mustafa Imamović, Sarajevo, 1998</li>
+
+<li>Ustav Federativne Narodne Republike Jugoslavije iz 1946. — službeni dokument FNRJ, Beograd, 1946.</li>
+
+
+</ul>
+
+</section>
+
+<footer>
+
+BARE COMPANY
+
+</footer>
+
+<script>
+
+function showSection(sectionId){
+
+const sections =
+document.querySelectorAll('.content-section');
+
+sections.forEach(section => {
+section.classList.remove('active');
+});
+
+document.getElementById(sectionId)
+.classList.add('active');
+
+window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
+
+    const sources = document.querySelector('.sources');
+    if (sources){
+        sources.style.display = sectionId === 'home' ? 'block' : 'none';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    const sources = document.querySelector('.sources');
+    if (sources){
+        sources.style.display = document.getElementById('home').classList.contains('active') ? 'block' : 'none';
+    }
+});
+
+</script>
+
+</body>
+</html>
